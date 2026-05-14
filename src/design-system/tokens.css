@@ -1,0 +1,91 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600;1,700&display=swap');
+
+:root {
+  --color-bg: #0d121c;
+  --color-bg-deep: #090e16;
+  --color-sidebar: #0b1120;
+  --color-sidebar-strong: #10192b;
+  --color-surface: #1b2434;
+  --color-surface-soft: #243149;
+  --color-surface-muted: #141c2a;
+  --color-border: rgba(164, 184, 214, 0.16);
+  --color-border-strong: rgba(130, 189, 255, 0.34);
+  --color-grid-line: rgba(255, 255, 255, 0.08);
+  --color-overlay-soft: rgba(255, 255, 255, 0.04);
+  --color-primary-focus: rgba(130, 189, 255, 0.12);
+  --color-primary-hover: rgba(130, 189, 255, 0.08);
+  --color-primary-outline-soft: rgba(130, 189, 255, 0.06);
+  --color-primary-outline-strong: rgba(130, 189, 255, 0.52);
+  --color-primary: #82bdff;
+  --color-primary-strong: #0077fc;
+  --color-primary-soft: rgba(130, 189, 255, 0.14);
+  --color-text: #f6f8fc;
+  --color-text-muted: #b8c2d7;
+  --color-text-subtle: #95a3bd;
+  --color-positive: #46d48f;
+  --color-warning: #f6b261;
+  --color-danger: #f28c8c;
+  --color-chart-bar: #55698d;
+  --color-chart-bar-soft: #6f86b2;
+  --font-family-base: 'Open Sans', 'Segoe UI', sans-serif;
+  --font-weight-regular: 400;
+  --font-weight-medium: 600;
+  --font-weight-bold: 700;
+  --font-weight-display: 800;
+  --radius-sm: 10px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-xl: 24px;
+  --shadow-card: 0 22px 48px rgba(3, 7, 17, 0.26);
+  --shadow-popover: 0 18px 38px rgba(5, 8, 20, 0.28);
+  --shadow-sidebar: 18px 0 46px rgba(3, 8, 19, 0.3);
+  --shadow-glow-primary: 0 0 16px rgba(62, 80, 232, 0.18);
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 12px;
+  --space-lg: 18px;
+  --space-xl: 24px;
+  --sidebar-width: 300px;
+  --transition-fast: 160ms ease;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  color-scheme: dark;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  color: var(--color-text);
+  background:
+    radial-gradient(circle at top right, rgba(130, 189, 255, 0.14), transparent 26%),
+    radial-gradient(circle at bottom left, rgba(0, 119, 252, 0.08), transparent 24%),
+    var(--color-bg);
+  font-family: var(--font-family-base);
+  line-height: 1.5;
+  font-weight: var(--font-weight-regular);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+a {
+  color: inherit;
+}
+
+#root {
+  min-height: 100vh;
+}

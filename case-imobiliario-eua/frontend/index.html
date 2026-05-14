@@ -1,0 +1,284 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Monitorar o setor imobiliário dos EUA para decidir com assertividade</title>
+    <link rel="stylesheet" href="/static/css/tokens.css" />
+    <link rel="stylesheet" href="/static/css/layout.css" />
+    <link rel="stylesheet" href="/static/css/components.css" />
+    <link rel="stylesheet" href="/static/css/story.css" />
+    <script defer src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
+    <script type="module" src="/static/js/main.js"></script>
+  </head>
+  <body>
+    <header class="hero page-shell" aria-labelledby="page-title">
+      <div class="hero__content">
+        <span class="hero__kicker">Case de inteligência econômica</span>
+        <h1 id="page-title">Monitorar o setor imobiliário dos EUA para decidir com assertividade</h1>
+        <p class="hero__subtitle">
+          Como a inteligência econômica transforma dados dispersos sobre juros, hipotecas e construção
+          residencial em sinais úteis para decisões estratégicas.
+        </p>
+        <div class="hero__meta">
+          <span class="meta-pill">Fonte: <strong>FRED / U.S. Census</strong></span>
+          <span class="meta-pill">Atualização: <strong id="last-updated">carregando...</strong></span>
+        </div>
+      </div>
+    </header>
+
+    <main class="page-shell">
+      <section class="intro-grid" aria-label="Síntese do case">
+        <article class="panel-card">
+          <span class="badge">Problema</span>
+          <h3>Dados demais, leitura de menos</h3>
+          <p>O mercado era acompanhado por várias fontes, mas sem uma estrutura econômica comum para decisão.</p>
+        </article>
+        <article class="panel-card">
+          <span class="badge">Método</span>
+          <h3>Radar de variáveis</h3>
+          <p>Juros, crédito, novas obras e absorção foram organizados como sinais encadeados do ciclo.</p>
+        </article>
+        <article class="panel-card">
+          <span class="badge">Decisão</span>
+          <h3>Leitura para diretoria, comercial e produção</h3>
+          <p>Os indicadores passaram a apoiar contexto estratégico, leitura de mercado e planejamento produtivo.</p>
+        </article>
+      </section>
+
+      <section class="opening-copy" aria-label="Abertura da narrativa">
+        <p>
+          Para uma empresa industrial, que produz produtos de madeira voltados para a construção civil dos EUA,
+          acompanhar o setor imobiliário daquele país se tornou uma necessidade estratégica. O desafio inicial era
+          claro: havia muitas informações disponíveis, mas elas estavam dispersas em diferentes fontes, sem uma
+          estrutura consolidada que permitisse transformar dados em leitura econômica útil para a diretoria, para o
+          setor comercial e para a produção.
+        </p>
+        <p>
+          A questão central era sair da confusão causada pelo emaranhado de dados esparsos, confusos e sem lógica,
+          deixando de simplesmente acompanhar o mercado imobiliário dos EUA, para começar a aplicar inteligência,
+          identificando quais variáveis realmente importavam para o negócio.
+        </p>
+        <p>
+          Como o ciclo da construção residencial influencia a demanda por produtos ligados a obras, acabamentos e
+          componentes de madeira, o monitoramento do setor imobiliário passou a funcionar como um radar econômico
+          para antecipar movimentos relevantes do mercado.
+        </p>
+      </section>
+
+      <section class="filters-bar" aria-label="Filtros de período e atualização">
+        <div>
+          <span class="badge">Período analisado</span>
+        </div>
+        <div class="filters-bar__controls">
+          <div class="segmented" role="group" aria-label="Selecionar período">
+            <button type="button" data-period="2018" class="is-active">2018 em diante</button>
+            <button type="button" data-period="2020">2020 em diante</button>
+            <button type="button" data-period="5y">Últimos 5 anos</button>
+            <button type="button" data-period="all">Completo</button>
+          </div>
+          <button class="refresh-button" type="button" id="refresh-data">Atualizar dados</button>
+        </div>
+      </section>
+
+      <section class="metrics-grid" aria-label="Valores atuais">
+        <article class="metric-card" data-summary-card="MORTGAGE30US"></article>
+        <article class="metric-card" data-summary-card="RCMFLOORIG"></article>
+        <article class="metric-card" data-summary-card="HOUST1FNSA"></article>
+        <article class="metric-card" data-summary-card="MSACSR"></article>
+      </section>
+
+      <section class="story-block" aria-labelledby="block-1-title">
+        <div class="story-copy">
+          <span class="section-kicker">Primeiro sinal do radar</span>
+          <h2 id="block-1-title">O primeiro sinal do radar: o custo do financiamento</h2>
+          <p>
+            O primeiro sinal desse radar de variáveis está nas condições financeiras. O mercado imobiliário americano
+            é fortemente dependente de crédito, e a taxa das hipotecas de 30 anos é uma das variáveis mais relevantes
+            para entender o custo de financiamento das famílias. A elevação dessa taxa significa que comprar uma casa
+            fica mais caro, a acessibilidade piora e parte da demanda pode ser adiada.
+          </p>
+          <p>
+            Para a empresa, isso é central, porque a desaceleração do financiamento pode se manifestar através de um
+            menor ritmo de construção e em menor demanda por produtos associados ao setor.
+          </p>
+          <div class="insight-box">Leitura executiva: juros mais altos tendem a esfriar a demanda antes de aparecerem nas encomendas industriais.</div>
+        </div>
+        <article class="chart-card">
+          <div class="chart-card__header">
+            <div class="chart-card__title">
+              <h3>Taxa média das hipotecas fixas de 30 anos nos Estados Unidos</h3>
+              <p>Custo de financiamento das famílias, em percentual ao ano.</p>
+            </div>
+            <span class="badge">MORTGAGE30US</span>
+          </div>
+          <div id="chart-mortgage-rate" class="chart" role="img" aria-label="Gráfico de linha da taxa hipotecária de 30 anos"></div>
+          <div class="chart-card__footer">
+            <span class="chart-description">A linha inclui média do período selecionado e variação em 12 meses no tooltip.</span>
+            <span class="chart-source">Fonte: FRED / Freddie Mac.</span>
+          </div>
+        </article>
+      </section>
+
+      <section class="story-block" aria-labelledby="block-2-title">
+        <div class="story-copy">
+          <span class="section-kicker">Crédito efetivo</span>
+          <h2 id="block-2-title">Dos juros ao comportamento do mercado: a originação de hipotecas</h2>
+          <p>
+            Mas os juros, sozinhos, não contam toda a história. Por isso, a segunda etapa da análise foi observar como
+            as condições financeiras se transformam em comportamento efetivo do mercado. Indicadores de acessibilidade
+            habitacional e de originação de hipotecas ajudam a mostrar se as famílias conseguem transformar intenção de
+            compra em financiamento.
+          </p>
+          <p>
+            Para a empresa, essa leitura ajuda a interpretar melhor o ambiente comercial. Uma eventual redução na
+            demanda pode não ser apenas um movimento isolado de vendas, mas o reflexo de um ciclo financeiro mais
+            restritivo no principal mercado externo.
+          </p>
+          <div class="insight-box">Leitura executiva: a originação aproxima o indicador financeiro do comportamento real de compra.</div>
+        </div>
+        <article class="chart-card">
+          <div class="chart-card__header">
+            <div class="chart-card__title">
+              <h3>Originação de novas hipotecas</h3>
+              <p>Barras mostram o volume; a linha mostra a variação interanual.</p>
+            </div>
+            <span class="badge">RCMFLOORIG</span>
+          </div>
+          <div id="chart-origination" class="chart" role="img" aria-label="Gráfico de barras e linha da originação de hipotecas"></div>
+          <div class="chart-card__footer">
+            <span class="chart-description">Quedas interanuais persistentes sugerem um mercado residencial mais restritivo.</span>
+            <span class="chart-source">Fonte: FRED.</span>
+          </div>
+        </article>
+      </section>
+
+      <section class="story-block" aria-labelledby="block-3-title">
+        <div class="story-copy">
+          <span class="section-kicker">Atividade de construção</span>
+          <h2 id="block-3-title">Quando o ciclo chega à construção: casas iniciadas</h2>
+          <p>
+            A terceira camada da análise aproxima a leitura econômica do coração do negócio: a atividade da construção
+            residencial. As casas iniciadas mostram quando novos projetos começam efetivamente a sair do papel. Para
+            uma empresa do ramo de produtos de madeira para a construção, esse indicador é especialmente relevante
+            porque novas construções hoje podem sinalizar demanda futura por componentes, acabamentos e materiais.
+          </p>
+          <div class="insight-box">Sinal antecedente da demanda futura, com destaque para casas unifamiliares.</div>
+        </div>
+        <article class="chart-card">
+          <div class="chart-card__header">
+            <div class="chart-card__title">
+              <h3>Novas casas iniciadas nos EUA: total e unifamiliares</h3>
+              <p>Compare nível mensal, média móvel de 12 meses ou variação interanual.</p>
+            </div>
+            <span class="badge">HOUSTNSA / HOUST1FNSA</span>
+          </div>
+          <div class="mode-toggle" role="group" aria-label="Transformação do gráfico de casas iniciadas">
+            <button type="button" data-housing-mode="value">Mensal</button>
+            <button type="button" data-housing-mode="ma12" class="is-active">Média 12m</button>
+            <button type="button" data-housing-mode="yoy_change">Var. interanual</button>
+          </div>
+          <div id="chart-housing-starts" class="chart" role="img" aria-label="Gráfico de linhas de casas iniciadas"></div>
+          <div class="chart-card__footer">
+            <span class="chart-description">A média móvel reduz ruído sazonal das séries não ajustadas.</span>
+            <span class="chart-source">Fonte: FRED / U.S. Census Bureau.</span>
+          </div>
+        </article>
+      </section>
+
+      <section class="story-block" aria-labelledby="block-4-title">
+        <div class="story-copy">
+          <span class="section-kicker">Absorção da oferta</span>
+          <h2 id="block-4-title">O mercado está absorvendo a oferta?</h2>
+          <p>
+            A leitura do ciclo imobiliário não termina no início das obras. Também é necessário observar se as casas
+            estão sendo concluídas e se o mercado consegue absorver essa oferta. Por isso, o monitoramento de casas
+            concluídas e da oferta de novas casas em meses permite avaliar o equilíbrio entre produção imobiliária e
+            demanda efetiva.
+          </p>
+          <p>
+            Quando as casas concluídas aumentam, mas a oferta em meses também cresce, isso pode indicar que o mercado
+            está acumulando estoque. Por outro lado, quando a oferta se mantém ajustada, há sinais de maior equilíbrio
+            entre construção e absorção.
+          </p>
+          <div class="insight-box">Leitura executiva: volume de obras precisa ser lido junto com estoque e velocidade de absorção.</div>
+        </div>
+        <article class="chart-card">
+          <div class="chart-card__header">
+            <div class="chart-card__title">
+              <h3>Casas concluídas e oferta de novas casas em meses</h3>
+              <p>Combo com barras de conclusão e linha de meses de oferta.</p>
+            </div>
+            <span class="badge">COMPUTSA / MSACSR</span>
+          </div>
+          <div id="chart-completions-supply" class="chart" role="img" aria-label="Gráfico combinado de casas concluídas e meses de oferta"></div>
+          <div class="chart-card__footer">
+            <span class="chart-description">Faixas de fundo indicam oferta baixa, normal e elevada.</span>
+            <span class="chart-source">Fonte: FRED / U.S. Census Bureau.</span>
+          </div>
+        </article>
+      </section>
+
+      <section class="final-section" aria-labelledby="final-title">
+        <h2 id="final-title">Da variável à decisão estratégica</h2>
+        <p>
+          Ao final, a inteligência econômica permitiu transformar dados dispersos em um sistema estruturado de leitura
+          do mercado. A empresa passou a monitorar não apenas o que aconteceu no setor imobiliário americano, mas
+          também os sinais que ajudam a interpretar seus próximos movimentos.
+        </p>
+        <p>
+          Para a diretoria, isso significa tomar decisões com mais contexto. Para o setor comercial, significa
+          compreender melhor o momento do principal mercado externo. Para a produção, significa acompanhar sinais que
+          podem antecipar mudanças na demanda.
+        </p>
+        <p>
+          O foco é, utilizando variáveis centrais para o negócio da empresa, compreender suas relações econômicas e
+          transformar informação em decisão estratégica.
+        </p>
+        <div class="decision-grid">
+          <article class="decision-card">
+            <span class="decision-card__code">MORTGAGE30US</span>
+            <h3>Custo do financiamento</h3>
+            <dl>
+              <dt>Pergunta decisória</dt>
+              <dd>O financiamento ficou mais caro?</dd>
+              <dt>Implicação</dt>
+              <dd>Cautela na leitura da demanda futura.</dd>
+            </dl>
+          </article>
+          <article class="decision-card">
+            <span class="decision-card__code">RCMFLOORIG</span>
+            <h3>Força do crédito imobiliário</h3>
+            <dl>
+              <dt>Pergunta decisória</dt>
+              <dd>As famílias estão conseguindo financiar imóveis?</dd>
+              <dt>Implicação</dt>
+              <dd>Qualificar a leitura do ambiente comercial.</dd>
+            </dl>
+          </article>
+          <article class="decision-card">
+            <span class="decision-card__code">HOUSTNSA / HOUST1FNSA</span>
+            <h3>Início de novas obras</h3>
+            <dl>
+              <dt>Pergunta decisória</dt>
+              <dd>A construção residencial está ganhando ou perdendo ritmo?</dd>
+              <dt>Implicação</dt>
+              <dd>Antecipar demanda futura por produtos da cadeia da construção.</dd>
+            </dl>
+          </article>
+          <article class="decision-card">
+            <span class="decision-card__code">COMPUTSA / MSACSR</span>
+            <h3>Conclusão e absorção</h3>
+            <dl>
+              <dt>Pergunta decisória</dt>
+              <dd>O mercado está absorvendo o que constrói?</dd>
+              <dt>Implicação</dt>
+              <dd>Calibrar expectativas comerciais e produtivas.</dd>
+            </dl>
+          </article>
+        </div>
+      </section>
+      <p class="footer-note">Página editorial de inteligência econômica para uso institucional no Observatório FIESC.</p>
+    </main>
+  </body>
+</html>

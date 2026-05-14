@@ -1,0 +1,23 @@
+.opening-copy::before,
+.final-section::before {
+  content: "";
+  width: 76px;
+  height: 3px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--color-primary), var(--color-warning));
+}
+
+.story-copy .section-kicker {
+  margin-bottom: 2px;
+}
+
+.story-block:nth-of-type(even) .chart-card {
+  background:
+    linear-gradient(180deg, rgba(27, 43, 67, 0.92), rgba(19, 27, 41, 0.98));
+}
+
+.footer-note {
+  padding: 26px 0 46px;
+  color: var(--color-text-subtle);
+  font-size: 0.82rem;
+}

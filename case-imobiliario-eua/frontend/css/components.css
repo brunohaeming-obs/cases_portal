@@ -1,0 +1,261 @@
+.badge,
+.meta-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 32px;
+  padding: 6px 11px;
+  border-radius: 999px;
+  border: 1px solid var(--color-border);
+  background: rgba(36, 49, 73, 0.72);
+  color: var(--color-text-muted);
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+
+.meta-pill strong {
+  color: var(--color-text);
+}
+
+.panel-card,
+.metric-card,
+.chart-card,
+.decision-card {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background:
+    linear-gradient(180deg, rgba(36, 49, 73, 0.82), rgba(27, 36, 52, 0.96));
+  box-shadow: var(--shadow-card);
+}
+
+.panel-card,
+.metric-card,
+.decision-card {
+  padding: 22px;
+}
+
+.panel-card {
+  display: grid;
+  gap: 10px;
+}
+
+.panel-card h3,
+.metric-card h3,
+.decision-card h3 {
+  margin: 0;
+  font-size: 1.02rem;
+}
+
+.panel-card p,
+.metric-card p,
+.decision-card p {
+  margin: 0;
+  color: var(--color-text-muted);
+  font-size: 0.92rem;
+}
+
+.filters-bar {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px;
+  margin-bottom: 28px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background: rgba(9, 14, 22, 0.86);
+  backdrop-filter: blur(16px);
+}
+
+.filters-bar__controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+}
+
+.segmented {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.segmented button,
+.mode-toggle button,
+.refresh-button {
+  min-height: 38px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  background: var(--color-surface-soft);
+  color: var(--color-text-muted);
+  font-weight: 700;
+  transition: border-color var(--transition-fast), background var(--transition-fast), color var(--transition-fast);
+}
+
+.segmented button,
+.mode-toggle button {
+  padding: 8px 12px;
+}
+
+.refresh-button {
+  padding: 8px 14px;
+  color: var(--color-primary);
+}
+
+.segmented button.is-active,
+.mode-toggle button.is-active,
+.refresh-button:hover,
+.segmented button:hover,
+.mode-toggle button:hover {
+  border-color: var(--color-primary);
+  background: var(--color-primary-soft);
+  color: var(--color-text);
+}
+
+.metric-card {
+  display: grid;
+  gap: 12px;
+  min-height: 160px;
+}
+
+.metric-card__value {
+  font-size: clamp(1.8rem, 3vw, 2.7rem);
+  line-height: 1;
+  font-weight: 800;
+}
+
+.metric-card__delta {
+  color: var(--color-text-subtle);
+  font-size: 0.84rem;
+}
+
+.metric-card__delta.is-up {
+  color: var(--color-warning);
+}
+
+.metric-card__delta.is-down {
+  color: var(--color-positive);
+}
+
+.insight-box {
+  padding: 16px;
+  border-left: 3px solid var(--color-primary);
+  border-radius: var(--radius-md);
+  background: rgba(130, 189, 255, 0.08);
+  color: var(--color-text-muted);
+}
+
+.chart-card {
+  overflow: hidden;
+}
+
+.chart-card__header {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 12px;
+  align-items: start;
+  padding: 22px 22px 8px;
+}
+
+.chart-card__title {
+  display: grid;
+  gap: 7px;
+}
+
+.chart-card h3 {
+  margin: 0;
+  font-size: 1.12rem;
+}
+
+.chart-card p {
+  margin: 0;
+  color: var(--color-text-muted);
+  font-size: 0.9rem;
+}
+
+.chart {
+  width: 100%;
+  height: 380px;
+}
+
+.chart-card__footer {
+  display: grid;
+  gap: 8px;
+  padding: 0 22px 22px;
+}
+
+.chart-source,
+.chart-description {
+  color: var(--color-text-subtle);
+  font-size: 0.78rem;
+}
+
+.chart-description {
+  color: var(--color-text-muted);
+}
+
+.mode-toggle {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  padding: 0 22px 8px;
+}
+
+.state-message {
+  min-height: 44px;
+  padding: 12px;
+  border-radius: var(--radius-md);
+  background: rgba(246, 178, 97, 0.1);
+  color: var(--color-warning);
+}
+
+.is-hidden {
+  display: none;
+}
+
+.decision-card {
+  display: grid;
+  gap: 12px;
+}
+
+.decision-card__code {
+  color: var(--color-primary);
+  font-size: 0.82rem;
+  font-weight: 800;
+}
+
+.decision-card dl {
+  display: grid;
+  gap: 10px;
+  margin: 0;
+}
+
+.decision-card dt {
+  color: var(--color-text-subtle);
+  font-size: 0.76rem;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.decision-card dd {
+  margin: 0;
+  color: var(--color-text-muted);
+}
+
+@media (max-width: 680px) {
+  .filters-bar {
+    position: static;
+  }
+
+  .chart {
+    height: 320px;
+  }
+
+  .chart-card__header {
+    grid-template-columns: 1fr;
+  }
+}

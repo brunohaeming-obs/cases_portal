@@ -1,0 +1,395 @@
+.sidebar {
+  color: var(--color-text);
+  background:
+    linear-gradient(180deg, color-mix(in srgb, var(--color-sidebar) 92%, white 8%) 0%, var(--color-sidebar) 100%);
+  border-right: 1px solid var(--color-border);
+  box-shadow: var(--shadow-sidebar);
+}
+
+.sidebar__brand {
+  display: grid;
+  gap: var(--space-md);
+  padding-bottom: var(--space-md);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.sidebar__logos {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-lg);
+  min-height: 96px;
+  width: 100%;
+}
+
+.sidebar__logo {
+  display: block;
+  max-width: 100%;
+  object-fit: contain;
+  opacity: 0.94;
+}
+
+.sidebar__logo--iel {
+  width: 34%;
+  max-width: 126px;
+  height: 48px;
+}
+
+.sidebar__logo--observatorio {
+  width: 68%;
+  max-width: 228px;
+  height: 82px;
+}
+
+.sidebar__eyebrow {
+  display: inline-flex;
+  width: 100%;
+  justify-content: center;
+  padding: 8px 14px;
+  border: 1px solid var(--color-border-strong);
+  border-radius: 999px;
+  background: var(--color-primary-soft);
+  color: var(--color-primary);
+  font-size: 0.88rem;
+  font-weight: var(--font-weight-medium);
+  letter-spacing: 0.01em;
+}
+
+.sidebar__brand h1 {
+  margin: 0;
+  font-size: 1.28rem;
+  line-height: 1.18;
+  font-weight: var(--font-weight-bold);
+}
+
+.sidebar__filters {
+  display: grid;
+  gap: var(--space-md);
+}
+
+.field {
+  display: grid;
+  gap: 6px;
+}
+
+.field span {
+  font-size: 0.76rem;
+  line-height: 1.2;
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-subtle);
+}
+
+.field select {
+  width: 100%;
+  min-height: 40px;
+  padding: 9px 12px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-surface-soft);
+  color: var(--color-text);
+  outline: none;
+  font-size: 0.92rem;
+  font-weight: var(--font-weight-medium);
+  transition:
+    border-color var(--transition-fast),
+    box-shadow var(--transition-fast),
+    background-color var(--transition-fast);
+}
+
+.field select:hover {
+  border-color: var(--color-border-strong);
+}
+
+.field select:focus {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px var(--color-primary-focus);
+}
+
+.field select:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.field option {
+  background: var(--color-bg-deep);
+  color: var(--color-text);
+}
+
+.sidebar__clear-button {
+  min-height: 40px;
+  padding: 9px 14px;
+  border: 1px solid var(--color-primary);
+  border-radius: var(--radius-md);
+  background: transparent;
+  color: var(--color-primary);
+  font-weight: var(--font-weight-medium);
+  cursor: pointer;
+  transition:
+    background-color var(--transition-fast),
+    border-color var(--transition-fast),
+    color var(--transition-fast),
+    transform var(--transition-fast);
+}
+
+.sidebar__clear-button:hover {
+  transform: translateY(-1px);
+  background: var(--color-primary-hover);
+  border-color: var(--color-primary-strong);
+  color: var(--color-text);
+}
+
+.sidebar__note {
+  margin-top: auto;
+  padding-top: var(--space-md);
+  border-top: 1px solid var(--color-border);
+}
+
+.sidebar__note p {
+  margin: 0;
+  font-size: 0.74rem;
+  line-height: 1.45;
+  color: var(--color-text-subtle);
+}
+
+.tabs {
+  display: grid;
+  gap: var(--space-lg);
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.tabs__button {
+  display: grid;
+  gap: 6px;
+  min-height: 112px;
+  padding: 18px;
+  border: 1px solid color-mix(in srgb, var(--color-primary) 45%, transparent);
+  border-radius: var(--radius-md);
+  background: color-mix(in srgb, var(--color-surface) 94%, var(--color-bg-deep) 6%);
+  color: var(--color-text);
+  text-align: left;
+  cursor: pointer;
+  transition:
+    background-color var(--transition-fast),
+    border-color var(--transition-fast),
+    box-shadow var(--transition-fast),
+    color var(--transition-fast),
+    transform var(--transition-fast);
+}
+
+.tabs__button-label {
+  font-size: 1rem;
+  font-weight: var(--font-weight-bold);
+}
+
+.tabs__button-description {
+  font-size: 0.84rem;
+  font-weight: var(--font-weight-regular);
+  color: var(--color-text-subtle);
+  line-height: 1.45;
+}
+
+.tabs__button.is-active {
+  color: var(--color-text);
+  border-color: var(--color-primary);
+  background: color-mix(in srgb, var(--color-primary) 14%, var(--color-surface) 86%);
+  box-shadow:
+    inset 0 0 0 1px color-mix(in srgb, var(--color-primary) 24%, transparent),
+    0 0 18px color-mix(in srgb, var(--color-primary) 20%, transparent);
+}
+
+.tabs__button.is-active .tabs__button-label {
+  color: var(--color-primary);
+}
+
+.tabs__button.is-active .tabs__button-description {
+  color: var(--color-text-muted);
+}
+
+.tabs__button:hover {
+  transform: translateY(-1px);
+  color: var(--color-text);
+  border-color: color-mix(in srgb, var(--color-primary) 70%, transparent);
+  background: color-mix(in srgb, var(--color-surface-soft) 78%, var(--color-bg-deep) 22%);
+  box-shadow: 0 14px 28px rgba(5, 8, 20, 0.18);
+}
+
+.hero,
+.summary-card,
+.ranking-panel,
+.chart-card,
+.metric-card {
+  border-radius: var(--radius-lg);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-card);
+}
+
+.summary-card,
+.ranking-panel,
+.chart-card,
+.metric-card {
+  padding: 22px;
+}
+
+.section-heading {
+  display: grid;
+  gap: 6px;
+}
+
+.section-heading h3,
+.ranking-highlight-card h4,
+.metric-card h3 {
+  margin: 0;
+  font-weight: var(--font-weight-bold);
+}
+
+.section-heading h3 {
+  font-size: 1.1rem;
+}
+
+.section-heading p,
+.chart-source,
+.metric-card__detail,
+.metric-card__meta,
+.ranking-highlight-card p,
+.ranking-highlight-card small {
+  color: var(--color-text-muted);
+}
+
+.section-heading__title-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-md);
+}
+
+.section-heading--centered {
+  text-align: center;
+}
+
+.chart-unit-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px 10px;
+  border-radius: 999px;
+  background: var(--color-primary-soft);
+  color: var(--color-primary);
+  font-size: 0.76rem;
+  font-weight: var(--font-weight-medium);
+  white-space: nowrap;
+}
+
+.chart-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.ranking-highlight-card {
+  display: grid;
+  gap: var(--space-md);
+  padding: 18px;
+  border-radius: var(--radius-md);
+  background: color-mix(in srgb, var(--color-surface) 92%, white 8%);
+  border: 1px solid var(--color-border-strong);
+  box-shadow:
+    inset 0 0 0 1px var(--color-primary-outline-soft),
+    var(--shadow-glow-primary);
+  text-align: center;
+  transition:
+    background-color var(--transition-fast),
+    border-color var(--transition-fast),
+    transform var(--transition-fast);
+}
+
+.ranking-highlight-card:hover,
+.ranking-highlight-card:focus-within {
+  transform: translateY(-1px);
+  background: var(--color-primary-hover);
+  border-color: var(--color-primary-outline-strong);
+}
+
+.ranking-highlight-card__value {
+  display: inline-flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 3px;
+  font-size: clamp(2.6rem, 3vw, 3.4rem);
+  line-height: 1;
+  color: var(--color-text);
+  font-weight: var(--font-weight-display);
+}
+
+.ranking-highlight-card__value sup {
+  position: relative;
+  top: -0.16em;
+  font-size: 0.54em;
+  line-height: 1;
+}
+
+.ranking-highlight-card h4 {
+  font-size: 1rem;
+}
+
+.ranking-highlight-card p,
+.ranking-highlight-card small {
+  margin: 0;
+  font-weight: var(--font-weight-regular);
+}
+
+.metric-card {
+  display: grid;
+  gap: var(--space-md);
+}
+
+.metric-card__header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+}
+
+.metric-card__badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 44px;
+  min-height: 32px;
+  padding: 0 10px;
+  border-radius: var(--radius-sm);
+  background: var(--color-primary-soft);
+  color: var(--color-primary);
+  font-size: 0.76rem;
+  font-weight: var(--font-weight-bold);
+}
+
+.metric-card__value {
+  font-size: 1.8rem;
+  line-height: 1.05;
+  font-weight: var(--font-weight-display);
+  color: var(--color-text);
+}
+
+.metric-card__detail,
+.metric-card__meta {
+  font-size: 0.84rem;
+}
+
+.metric-card__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-md);
+}
+
+@media (max-width: 1180px) {
+  .tabs {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-md);
+  }
+}
+
+@media (max-width: 760px) {
+  .tabs {
+    grid-template-columns: 1fr;
+    gap: var(--space-sm);
+  }
+}

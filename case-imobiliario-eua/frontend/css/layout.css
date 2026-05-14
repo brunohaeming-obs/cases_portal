@@ -1,0 +1,148 @@
+.page-shell {
+  width: min(1180px, calc(100% - 36px));
+  margin: 0 auto;
+}
+
+.hero {
+  min-height: 88vh;
+  display: grid;
+  align-items: end;
+  padding: 64px 0 48px;
+}
+
+.hero__content {
+  display: grid;
+  gap: 28px;
+  max-width: 980px;
+}
+
+.hero__kicker,
+.section-kicker {
+  width: fit-content;
+  padding: 7px 12px;
+  border: 1px solid var(--color-border-strong);
+  border-radius: 999px;
+  color: var(--color-primary);
+  background: var(--color-primary-soft);
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+
+.hero h1 {
+  max-width: 900px;
+  margin: 0;
+  font-size: clamp(2.25rem, 6vw, 5.5rem);
+  line-height: 1.02;
+  letter-spacing: 0;
+  font-weight: 800;
+}
+
+.hero__subtitle {
+  max-width: 850px;
+  margin: 0;
+  color: var(--color-text-muted);
+  font-size: clamp(1.04rem, 1.8vw, 1.35rem);
+}
+
+.hero__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+}
+
+.intro-grid,
+.metrics-grid,
+.decision-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.intro-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin-bottom: 58px;
+}
+
+.metrics-grid {
+  margin-bottom: 76px;
+}
+
+.story-block {
+  display: grid;
+  grid-template-columns: minmax(280px, 0.88fr) minmax(420px, 1.12fr);
+  gap: clamp(22px, 4vw, 44px);
+  align-items: center;
+  padding: 58px 0;
+  border-top: 1px solid var(--color-border);
+}
+
+.story-block:last-of-type {
+  border-bottom: 1px solid var(--color-border);
+}
+
+.story-copy {
+  display: grid;
+  gap: 18px;
+}
+
+.story-copy h2,
+.final-section h2 {
+  margin: 0;
+  font-size: clamp(1.7rem, 3vw, 2.7rem);
+  line-height: 1.14;
+}
+
+.story-copy p,
+.final-section p,
+.opening-copy p {
+  margin: 0;
+  color: var(--color-text-muted);
+  font-size: 1rem;
+}
+
+.opening-copy {
+  display: grid;
+  gap: 18px;
+  max-width: 890px;
+  margin-bottom: 56px;
+}
+
+.final-section {
+  display: grid;
+  gap: 28px;
+  padding: 70px 0;
+}
+
+@media (max-width: 1020px) {
+  .intro-grid,
+  .metrics-grid,
+  .decision-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .story-block {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 680px) {
+  .page-shell {
+    width: min(100% - 24px, 1180px);
+  }
+
+  .hero {
+    min-height: auto;
+    padding: 48px 0 36px;
+  }
+
+  .intro-grid,
+  .metrics-grid,
+  .decision-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .story-block {
+    padding: 42px 0;
+  }
+}
