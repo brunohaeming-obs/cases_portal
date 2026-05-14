@@ -3,11 +3,13 @@
 :root {
   --color-bg: #0d121c;
   --color-bg-deep: #090e16;
+  --color-sidebar: #0b1120;
   --color-surface: #1b2434;
   --color-surface-soft: #243149;
   --color-surface-muted: #141c2a;
   --color-border: rgba(164, 184, 214, 0.16);
   --color-border-strong: rgba(130, 189, 255, 0.34);
+  --color-grid-line: rgba(255, 255, 255, 0.08);
   --color-primary: #82bdff;
   --color-primary-strong: #0077fc;
   --color-primary-soft: rgba(130, 189, 255, 0.14);
@@ -20,7 +22,8 @@
   --font-family-base: "Open Sans", "Segoe UI", sans-serif;
   --radius-sm: 8px;
   --radius-md: 12px;
-  --radius-lg: 18px;
+  --radius-lg: 20px;
+  --radius-xl: 24px;
   --shadow-card: 0 22px 48px rgba(3, 7, 17, 0.28);
   --transition-fast: 160ms ease;
 }
@@ -40,9 +43,8 @@ body {
   min-height: 100vh;
   color: var(--color-text);
   background:
-    linear-gradient(180deg, rgba(9, 14, 22, 0.28), rgba(13, 18, 28, 0.9)),
-    radial-gradient(circle at 14% 8%, rgba(130, 189, 255, 0.12), transparent 28%),
-    radial-gradient(circle at 82% 16%, rgba(0, 119, 252, 0.1), transparent 24%),
+    linear-gradient(180deg, rgba(9, 14, 22, 0.34), rgba(13, 18, 28, 0.94)),
+    linear-gradient(135deg, rgba(0, 119, 252, 0.1), transparent 42%),
     var(--color-bg);
   font-family: var(--font-family-base);
   line-height: 1.55;

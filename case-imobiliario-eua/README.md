@@ -9,6 +9,7 @@ case-imobiliario-eua/
   backend/
     main.py
     services/
+      __init__.py
       fred_service.py
       transform_service.py
     cache/
@@ -25,68 +26,98 @@ case-imobiliario-eua/
     js/
       api.js
       charts.js
-      main.js
       formatters.js
+      main.js
+```
+
+## Criar ambiente virtual
+
+```powershell
+cd C:\Users\bruno.haeming\Desktop\cases_portal\case-imobiliario-eua\backend
+python -m venv .venv
+.\.venv\Scripts\Activate.ps1
 ```
 
 ## Instalar dependencias
 
 ```powershell
-cd C:\Users\bruno.haeming\Desktop\cases_portal\case-imobiliario-eua\backend
-C:\Users\bruno.haeming\AppData\Local\Programs\Python\Python313\python.exe -m pip install -r requirements.txt
+python -m pip install -r requirements.txt
 ```
 
 ## Configurar FRED_API_KEY
 
-Copie `.env.example` para `.env` e informe a chave, se quiser enriquecer metadados pela API oficial:
+A chave do FRED e opcional para a pagina rodar quando houver cache local. Ela enriquece metadados pela API oficial.
+
+```powershell
+Copy-Item .env.example .env
+```
+
+Edite `.env`:
 
 ```text
 FRED_API_KEY=sua_chave
 ```
 
-A coleta principal usa o CSV publico do FRED e tambem tem fallback para `data/processed/fred_housing_series_long.csv`, ja gerado no projeto.
-
 ## Rodar localmente
 
 ```powershell
-cd C:\Users\bruno.haeming\Desktop\cases_portal\case-imobiliario-eua\backend
-C:\Users\bruno.haeming\AppData\Local\Programs\Python\Python313\python.exe -m uvicorn main:app --reload --host 127.0.0.1 --port 8010
+uvicorn main:app --reload --host 127.0.0.1 --port 8000
 ```
 
 Acesse:
 
 ```text
-http://127.0.0.1:8010/
+http://127.0.0.1:8000
 ```
 
-## Atualizar dados
+## Cache e dados
 
-Na interface, use o botao `Atualizar dados`. Ele chama `/api/story-data?refresh=true` e regrava o cache em:
+A aplicacao busca as series no CSV publico do FRED e salva um cache local por serie em:
 
 ```text
 backend/cache/fred/{code}.parquet
 ```
 
-Tambem e possivel atualizar via endpoint:
+Se a coleta online falhar, o backend tenta usar o parquet ja existente. Se ainda nao houver parquet, tenta usar a base processada em:
+
+```text
+data/processed/fred_housing_series_long.csv
+```
+
+Series obrigatorias da narrativa:
+
+- `MORTGAGE30US`
+- `RCMFLOORIG`
+- `HOUSTNSA`
+- `HOUST1FNSA`
+- `COMPUTSA`
+- `MSACSR`
+
+## Atualizar dados
+
+Na interface, use o botao `Atualizar dados`. Ele chama os endpoints com `refresh=true` e regrava os parquets disponiveis.
+
+Tambem e possivel atualizar via URL:
 
 ```text
 GET /api/story-data?refresh=true
 GET /api/summary?refresh=true
+GET /api/series/MORTGAGE30US?refresh=true
 ```
 
 ## Endpoints
 
-- `GET /`: serve a pagina.
-- `GET /api/health`: status simples.
+- `GET /`: serve a pagina editorial.
+- `GET /api/health`: status da aplicacao e series mapeadas.
 - `GET /api/series/{code}`: retorna uma serie individual.
-- `GET /api/story-data`: retorna todas as series usadas na narrativa.
-- `GET /api/summary`: retorna ultimos valores e variacoes.
+- `GET /api/story-data`: retorna as series usadas na narrativa.
+- `GET /api/summary`: retorna ultimos valores e variacoes interanuais.
 
 ## Embutir no portal
 
 Para embutir no portal do Observatorio FIESC, ha duas alternativas:
 
-1. Servir a pasta `case-imobiliario-eua/backend` como aplicacao FastAPI e apontar o portal para a URL publica da pagina.
+1. Servir `case-imobiliario-eua/backend` como aplicacao FastAPI e apontar o portal para a URL publica da pagina.
 2. Incorporar o conteudo de `frontend/` no pipeline estatico do portal e manter os endpoints `/api/*` servidos pelo backend.
 
-O MVP nao usa React. O frontend e HTML, CSS e JavaScript modular com Apache ECharts via CDN.
+O MVP usa HTML, CSS e JavaScript vanilla no frontend, FastAPI no backend e Apache ECharts via CDN para os graficos.

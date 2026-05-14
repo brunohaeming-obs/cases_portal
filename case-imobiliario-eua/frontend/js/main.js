@@ -22,10 +22,21 @@ const metricLabels = {
   MSACSR: "Últimos meses de oferta",
 };
 
+const summarySectionMap = {
+  problema: "problema",
+  metodo: "metodo",
+  "grafico-juros": "grafico-juros",
+  "grafico-hipotecas": "grafico-hipotecas",
+  "grafico-casas": "grafico-hipotecas",
+  "grafico-oferta": "grafico-oferta",
+};
+
 document.addEventListener("DOMContentLoaded", init);
 
 async function init() {
   registerEvents();
+  registerSummaryObserver();
+  await waitForECharts();
   await loadData();
 }
 
@@ -46,7 +57,17 @@ function registerEvents() {
     });
   });
 
-  document.getElementById("refresh-data").addEventListener("click", async () => {
+  document.querySelectorAll("[data-summary-link]").forEach((link) => {
+    link.addEventListener("click", (event) => {
+      const target = document.querySelector(link.getAttribute("href"));
+      if (!target) return;
+      event.preventDefault();
+      target.scrollIntoView({ behavior: "smooth", block: "start" });
+      setActiveSummary(link.dataset.summaryLink);
+    });
+  });
+
+  document.getElementById("refresh-data")?.addEventListener("click", async () => {
     await loadData({ refresh: true });
   });
 
@@ -57,7 +78,30 @@ function registerEvents() {
   }
 }
 
+function registerSummaryObserver() {
+  if (!("IntersectionObserver" in window)) return;
+
+  const sections = Object.keys(summarySectionMap)
+    .map((id) => document.getElementById(id))
+    .filter(Boolean);
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      const visible = entries
+        .filter((entry) => entry.isIntersecting)
+        .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+      if (visible) {
+        setActiveSummary(summarySectionMap[visible.target.id]);
+      }
+    },
+    { rootMargin: "-30% 0px -55% 0px", threshold: [0.12, 0.28, 0.45] },
+  );
+
+  sections.forEach((section) => observer.observe(section));
+}
+
 async function loadData({ refresh = false } = {}) {
+  clearError();
   setLoading(true);
   try {
     const [storyData, summary] = await Promise.all([fetchStoryData({ refresh }), fetchSummary({ refresh })]);
@@ -65,8 +109,9 @@ async function loadData({ refresh = false } = {}) {
     state.summary = summary;
     document.getElementById("last-updated").textContent = formatFullDate(storyData.last_updated);
     render();
+    showSeriesWarnings(storyData.errors || {});
   } catch (error) {
-    showError(error);
+    showError(`Não foi possível carregar os dados econômicos. ${error.message}`);
   } finally {
     setLoading(false);
   }
@@ -77,32 +122,26 @@ function render() {
 
   renderSummaryCards();
   const series = state.storyData.series;
-  renderMortgageRateChart(
-    document.getElementById("chart-mortgage-rate"),
-    filterPeriod(series.MORTGAGE30US),
-  );
-  renderMortgageOriginationChart(
-    document.getElementById("chart-origination"),
-    filterPeriod(series.RCMFLOORIG),
-  );
+  renderMortgageRateChart(document.getElementById("chart-mortgage-rate"), filterPeriod(series.MORTGAGE30US || []));
+  renderMortgageOriginationChart(document.getElementById("chart-origination"), filterPeriod(series.RCMFLOORIG || []));
   renderHousingStartsChart(
     document.getElementById("chart-housing-starts"),
-    filterPeriod(series.HOUSTNSA),
-    filterPeriod(series.HOUST1FNSA),
+    filterPeriod(series.HOUSTNSA || []),
+    filterPeriod(series.HOUST1FNSA || []),
     state.housingMode,
   );
   renderCompletionsSupplyChart(
     document.getElementById("chart-completions-supply"),
-    filterPeriod(series.COMPUTSA),
-    filterPeriod(series.MSACSR),
+    filterPeriod(series.COMPUTSA || []),
+    filterPeriod(series.MSACSR || []),
   );
 }
 
 function renderSummaryCards() {
   document.querySelectorAll("[data-summary-card]").forEach((card) => {
     const code = card.dataset.summaryCard;
-    const summary = state.summary[code];
-    const metadata = state.storyData.metadata[code];
+    const summary = state.summary[code] || {};
+    const metadata = state.storyData.metadata[code] || {};
     const value = formatUnit(summary.latest_value, summary.unit, summary.unit === "%" ? 2 : 1);
     const delta = formatDelta(summary.yoy_change);
     const deltaClass = Number(summary.yoy_change) >= 0 ? "is-up" : "is-down";
@@ -111,7 +150,7 @@ function renderSummaryCards() {
       <h3>${metricLabels[code]}</h3>
       <div class="metric-card__value">${value}</div>
       <p class="metric-card__delta ${deltaClass}">${delta}</p>
-      <p>${metadata.frequency} · ${formatFullDate(summary.latest_date)}</p>
+      <p>${metadata.frequency || "frequência n.d."} · ${formatFullDate(summary.latest_date)}</p>
     `;
   });
 }
@@ -129,7 +168,7 @@ function filterPeriod(records) {
     start.setFullYear(today.getFullYear() - 5);
   }
 
-  return records.filter((record) => new Date(record.date) >= start);
+  return records.filter((record) => new Date(`${record.date}T12:00:00`) >= start);
 }
 
 function setActiveButton(selector, activeButton) {
@@ -137,7 +176,14 @@ function setActiveButton(selector, activeButton) {
   activeButton.classList.add("is-active");
 }
 
+function setActiveSummary(key) {
+  document.querySelectorAll("[data-summary-link]").forEach((link) => {
+    link.classList.toggle("is-active", link.dataset.summaryLink === key);
+  });
+}
+
 function setLoading(isLoading) {
+  document.body.classList.toggle("is-loading", isLoading);
   document.querySelectorAll(".chart").forEach((container) => {
     container.setAttribute("aria-busy", String(isLoading));
     const chart = window.echarts ? echarts.getInstanceByDom(container) : null;
@@ -149,16 +195,45 @@ function setLoading(isLoading) {
         maskColor: "rgba(13,18,28,0.55)",
       });
     } else if (chart) {
-      chart?.hideLoading();
+      chart.hideLoading();
     }
   });
 }
 
-function showError(error) {
-  document.querySelectorAll(".chart-card__footer").forEach((footer) => {
-    const message = document.createElement("div");
-    message.className = "state-message";
-    message.textContent = `Não foi possível carregar uma ou mais séries. ${error.message}`;
-    footer.prepend(message);
+function showSeriesWarnings(errors) {
+  const codes = Object.keys(errors);
+  if (codes.length) {
+    showError(`Algumas séries estão indisponíveis no momento: ${codes.join(", ")}. A página permanece com os dados disponíveis.`);
+  }
+}
+
+function showError(message) {
+  const target = document.getElementById("page-state");
+  if (!target) return;
+  target.textContent = message;
+  target.classList.remove("is-hidden");
+}
+
+function clearError() {
+  const target = document.getElementById("page-state");
+  if (!target) return;
+  target.textContent = "";
+  target.classList.add("is-hidden");
+}
+
+function waitForECharts() {
+  if (window.echarts) return Promise.resolve();
+  return new Promise((resolve, reject) => {
+    let attempts = 0;
+    const timer = window.setInterval(() => {
+      attempts += 1;
+      if (window.echarts) {
+        window.clearInterval(timer);
+        resolve();
+      } else if (attempts > 80) {
+        window.clearInterval(timer);
+        reject(new Error("Biblioteca de gráficos indisponível."));
+      }
+    }, 50);
   });
 }

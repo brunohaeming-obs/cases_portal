@@ -41,7 +41,7 @@ SERIES_METADATA = {
         "code": "RCMFLOORIG",
         "label": "Originacao de novas hipotecas",
         "description": "Volume de novas hipotecas originadas no mercado residencial.",
-        "unit": "US$",
+        "unit": "US$ bi",
         "frequency": "trimestral",
         "transformation": "nivel e variacao interanual",
         "source": "FRED",
@@ -108,23 +108,40 @@ def get_series(code: str, refresh: bool = False) -> dict:
 def get_story_data(refresh: bool = False) -> dict:
     series = {}
     metadata = {}
+    errors = {}
     for code in SERIES_METADATA:
-        payload = get_series(code, refresh=refresh)
-        series[code] = payload["data"]
-        metadata[code] = {key: value for key, value in payload.items() if key != "data"}
+        try:
+            payload = get_series(code, refresh=refresh)
+            series[code] = payload["data"]
+            metadata[code] = {key: value for key, value in payload.items() if key != "data"}
+        except Exception as exc:
+            series[code] = []
+            fallback_metadata = SERIES_METADATA[code].copy()
+            fallback_metadata["last_updated"] = None
+            metadata[code] = fallback_metadata
+            errors[code] = "Serie indisponivel no momento."
 
     return {
         "series": series,
         "metadata": metadata,
-        "last_updated": datetime.now(timezone.utc).isoformat(),
+        "errors": errors,
+        "last_updated": datetime.now(timezone.utc).date().isoformat(),
     }
 
 
 def get_summary(refresh: bool = False) -> dict:
     summary = {}
     for code, metadata in SERIES_METADATA.items():
-        records = _load_series_records(code, refresh=refresh)
-        summary[code] = summarize_series(records, metadata["unit"])
+        try:
+            records = _load_series_records(code, refresh=refresh)
+            summary[code] = summarize_series(records, metadata["unit"])
+        except Exception:
+            summary[code] = {
+                "latest_value": None,
+                "latest_date": None,
+                "yoy_change": None,
+                "unit": metadata["unit"],
+            }
     return summary
 
 

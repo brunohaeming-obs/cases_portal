@@ -1,3 +1,4 @@
+import os
 from pathlib import Path
 from datetime import datetime
 from io import StringIO
@@ -6,8 +7,14 @@ from time import sleep
 import pandas as pd
 import requests
 
+try:
+    from dotenv import load_dotenv
 
-API_KEY = "a979d852962faecc4b6082d3a4da3fe5"
+    load_dotenv()
+except ImportError:
+    pass
+
+API_KEY = os.getenv("FRED_API_KEY", "")
 OBSERVATION_START = "2000-01-01"
 
 BASE_DIR = Path(__file__).resolve().parent
@@ -167,6 +174,9 @@ def baixar_observacoes(serie_id):
 
 
 def baixar_metadados(serie_id):
+    if not API_KEY:
+        return {}
+
     params = {
         "series_id": serie_id,
         "api_key": API_KEY,
