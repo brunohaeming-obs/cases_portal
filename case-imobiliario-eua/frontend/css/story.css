@@ -110,13 +110,16 @@
   line-height: 1.62;
 }
 
-.opening-copy::before,
-.final-section::before {
+.opening-copy::before {
   content: "";
   width: 76px;
   height: 3px;
   border-radius: 999px;
   background: linear-gradient(90deg, var(--color-primary), var(--color-warning));
+}
+
+.final-summary {
+  margin: 54px 0 34px;
 }
 
 .story-copy .section-kicker,
