@@ -235,11 +235,11 @@
 }
 
 .metric-card__delta.is-up {
-  color: var(--color-warning);
+  color: var(--color-positive);
 }
 
 .metric-card__delta.is-down {
-  color: var(--color-positive);
+  color: #b84a4a;
 }
 
 .insight-box {
