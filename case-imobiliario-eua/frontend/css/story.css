@@ -33,8 +33,8 @@
 .story-summary__grid {
   position: relative;
   display: grid;
-  grid-template-columns: repeat(5, minmax(0, 1fr));
-  gap: 12px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
 }
 
 .story-summary__grid::before {
@@ -53,8 +53,8 @@
   display: grid;
   grid-template-rows: auto auto auto 1fr;
   gap: 8px;
-  min-height: 225px;
-  padding: 16px;
+  min-height: 300px;
+  padding: 20px;
   border: 1px solid var(--color-border);
   border-radius: var(--radius-lg);
   background: rgba(27, 36, 52, 0.82);
@@ -100,14 +100,14 @@
 
 .story-summary__title {
   color: var(--color-text);
-  font-size: 1.02rem;
+  font-size: 1.12rem;
   line-height: 1.28;
 }
 
 .story-summary__description {
   color: var(--color-text-muted);
-  font-size: 0.88rem;
-  line-height: 1.58;
+  font-size: 0.92rem;
+  line-height: 1.62;
 }
 
 .opening-copy::before,

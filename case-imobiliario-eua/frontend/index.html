@@ -4,12 +4,12 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Monitoramento estratégico do setor imobiliário dos EUA</title>
-    <link rel="stylesheet" href="/static/css/tokens.css?v=20260515-kpi-strategy-pill" />
-    <link rel="stylesheet" href="/static/css/layout.css?v=20260515-kpi-strategy-pill" />
-    <link rel="stylesheet" href="/static/css/components.css?v=20260515-kpi-strategy-pill" />
-    <link rel="stylesheet" href="/static/css/story.css?v=20260515-kpi-strategy-pill" />
+    <link rel="stylesheet" href="/static/css/tokens.css?v=20260515-summary-three" />
+    <link rel="stylesheet" href="/static/css/layout.css?v=20260515-summary-three" />
+    <link rel="stylesheet" href="/static/css/components.css?v=20260515-summary-three" />
+    <link rel="stylesheet" href="/static/css/story.css?v=20260515-summary-three" />
     <script defer src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
-    <script type="module" src="/static/js/main.js?v=20260515-kpi-strategy-pill"></script>
+    <script type="module" src="/static/js/main.js?v=20260515-summary-three"></script>
   </head>
   <body>
     <header class="hero page-shell" aria-labelledby="page-title">
@@ -26,78 +26,32 @@
           <h2 id="summary-title">Jornada da Inteligência Econômica</h2>
           <p>Da identificação do problema à transformação dos dados em decisão estratégica.</p>
         </div>
-        <nav class="story-summary__grid" aria-label="Jornada da Inteligência Econômica">
-          <a class="story-summary__item is-active" href="#problema" data-summary-link="problema">
+        <div class="story-summary__grid" aria-label="Jornada da Inteligência Econômica">
+          <article class="story-summary__item is-active">
             <span class="story-summary__number">01</span>
             <span class="story-summary__icon" aria-hidden="true">
               <svg viewBox="0 0 24 24"><path d="M12 3 2.6 20h18.8L12 3Z"/><path d="M12 9v5"/><path d="M12 17h.01"/></svg>
             </span>
-            <strong class="story-summary__title">Problema</strong>
-            <span class="story-summary__description">Os dados sobre o mercado imobiliário dos EUA estavam dispersos, dificultando uma leitura consolidada para a diretoria, o comercial e a produção.</span>
-          </a>
-          <a class="story-summary__item" href="#metodo" data-summary-link="metodo">
+            <strong class="story-summary__title">Problema de negócio</strong>
+            <span class="story-summary__description">Os dados sobre o mercado imobiliário dos EUA estavam dispersos em diferentes fontes, dificultando uma leitura consolidada para apoiar decisões da diretoria, do comercial e da produção.<br><br>A questão central era sair da confusão causada pelo emaranhado de dados esparsos, confusos e sem lógica, deixando de simplesmente “acompanhar o mercado imobiliário dos EUA”, para começar a aplicar inteligência, identificando quais variáveis realmente importavam para o negócio.</span>
+          </article>
+          <article class="story-summary__item">
             <span class="story-summary__number">02</span>
             <span class="story-summary__icon" aria-hidden="true">
               <svg viewBox="0 0 24 24"><path d="M4 13a8 8 0 0 1 16 0"/><path d="M12 13l5-5"/><path d="M6.5 17h11"/></svg>
             </span>
-            <strong class="story-summary__title">Inteligência econômica</strong>
-            <span class="story-summary__description">A análise seleciona variáveis capazes de traduzir o ciclo da construção residencial em sinais relevantes para o negócio.</span>
-          </a>
-          <a class="story-summary__item" href="#grafico-juros" data-summary-link="grafico-juros">
+            <strong class="story-summary__title">Inteligência Econômica</strong>
+            <span class="story-summary__description">A análise seleciona variáveis capazes de traduzir o ciclo da construção residencial em sinais relevantes para o negócio.<br><br>A inteligência econômica foi utilizada para selecionar variáveis centrais do setor imobiliário americano e organizar essas informações em uma leitura estruturada do ciclo da construção residencial.</span>
+          </article>
+          <article class="story-summary__item">
             <span class="story-summary__number">03</span>
             <span class="story-summary__icon" aria-hidden="true">
               <svg viewBox="0 0 24 24"><path d="M4 19V5"/><path d="M4 17c4-7 7 2 10-5 2-5 4-4 6-7"/></svg>
             </span>
-            <strong class="story-summary__title">Condições financeiras</strong>
-            <span class="story-summary__description">A taxa hipotecária de 30 anos mostra o custo do financiamento imobiliário.</span>
-          </a>
-          <a class="story-summary__item" href="#grafico-hipotecas" data-summary-link="grafico-hipotecas">
-            <span class="story-summary__number">04</span>
-            <span class="story-summary__icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24"><path d="M4 19h16"/><path d="M7 16V9"/><path d="M12 16V5"/><path d="M17 16v-4"/></svg>
-            </span>
-            <strong class="story-summary__title">Crédito e construção</strong>
-            <span class="story-summary__description">A originação de hipotecas e as casas iniciadas ajudam a observar se o mercado transforma intenção em atividade.</span>
-          </a>
-          <a class="story-summary__item" href="#grafico-oferta" data-summary-link="grafico-oferta">
-            <span class="story-summary__number">05</span>
-            <span class="story-summary__icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24"><path d="M4 20h16"/><path d="M6 20V9l6-4 6 4v11"/><path d="M9 20v-6h6v6"/></svg>
-            </span>
-            <strong class="story-summary__title">Oferta e decisão</strong>
-            <span class="story-summary__description">Casas concluídas e meses de oferta indicam se o mercado absorve o que constrói.</span>
-          </a>
-        </nav>
-      </section>
-
-      <section id="problema" class="intro-grid story-anchor" aria-label="Síntese do case">
-        <article class="panel-card panel-card--numbered">
-          <h3>1 - Problema de negócio</h3>
-          <p>
-            Os dados sobre o mercado imobiliário dos EUA estavam <strong>dispersos</strong> em diferentes fontes,
-            dificultando uma leitura consolidada para apoiar decisões da diretoria, do comercial e da produção.
-          </p>
-          <p>
-            A questão central era sair da confusão causada pelo emaranhado de dados esparsos, confusos e sem lógica,
-            deixando de simplesmente “acompanhar o mercado imobiliário dos EUA”, para começar a aplicar inteligência,
-            identificando quais variáveis realmente importavam para o negócio.
-          </p>
-        </article>
-        <article id="metodo" class="panel-card panel-card--numbered story-anchor">
-          <h3>2 - Método do Observatório FIESC</h3>
-          <p>
-            A inteligência econômica foi utilizada para selecionar <strong>variáveis centrais</strong> do setor
-            imobiliário americano e organizar essas informações em uma leitura estruturada do ciclo da construção
-            residencial.
-          </p>
-        </article>
-        <article class="panel-card panel-card--numbered">
-          <h3>3 - Decisão</h3>
-          <p>
-            O monitoramento passou a funcionar como um <strong>radar econômico</strong>, permitindo interpretar sinais
-            do mercado e qualificar decisões estratégicas.
-          </p>
-        </article>
+            <strong class="story-summary__title">Ambiente de Negócio</strong>
+            <span class="story-summary__description">Identificação dos principais eixos que norteiam a análise do mercado imobiliário dos EUA. O monitoramento passou a funcionar como um radar econômico, permitindo interpretar sinais do mercado e qualificar decisões estratégicas.</span>
+          </article>
+        </div>
       </section>
 
       <section class="filters-bar" aria-label="Filtros de período e atualização">

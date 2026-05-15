@@ -47,8 +47,6 @@ const metricInsights = {
 };
 
 const summarySectionMap = {
-  problema: "problema",
-  metodo: "metodo",
   "grafico-juros": "grafico-juros",
   "grafico-hipotecas": "grafico-hipotecas",
   "grafico-casas": "grafico-hipotecas",
