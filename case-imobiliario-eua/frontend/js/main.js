@@ -22,6 +22,30 @@ const metricLabels = {
   MSACSR: "Últimos meses de oferta",
 };
 
+const metricCodeLabels = {
+  HOUST1FNSA: "HOUSTNSA | HOUST1FNSA",
+  MSACSR: "COMPUTSA | MSACSR",
+};
+
+const metricInsights = {
+  MORTGAGE30US: {
+    variable: "Condições financeiras do mercado imobiliário.",
+    decision: "A elevação dos juros pode encarecer o financiamento, reduzir a acessibilidade e adiar parte da demanda.",
+  },
+  RCMFLOORIG: {
+    variable: "Transformação das condições financeiras em comportamento efetivo do mercado.",
+    decision: "Quando a originação perde força, o mercado residencial pode sinalizar enfraquecimento.",
+  },
+  HOUST1FNSA: {
+    variable: "Atividade da construção residencial.",
+    decision: "Novas construções podem sinalizar demanda futura por componentes, acabamentos e materiais.",
+  },
+  MSACSR: {
+    variable: "Equilíbrio entre produção imobiliária e absorção da demanda.",
+    decision: "Aumento simultâneo de conclusões e oferta em meses pode indicar acúmulo de estoque e exigir cautela.",
+  },
+};
+
 const summarySectionMap = {
   problema: "problema",
   metodo: "metodo",
@@ -107,7 +131,10 @@ async function loadData({ refresh = false } = {}) {
     const [storyData, summary] = await Promise.all([fetchStoryData({ refresh }), fetchSummary({ refresh })]);
     state.storyData = storyData;
     state.summary = summary;
-    document.getElementById("last-updated").textContent = formatFullDate(storyData.last_updated);
+    const lastUpdated = document.getElementById("last-updated");
+    if (lastUpdated) {
+      lastUpdated.textContent = formatFullDate(storyData.last_updated);
+    }
     render();
     showSeriesWarnings(storyData.errors || {});
   } catch (error) {
@@ -142,15 +169,29 @@ function renderSummaryCards() {
     const code = card.dataset.summaryCard;
     const summary = state.summary[code] || {};
     const metadata = state.storyData.metadata[code] || {};
+    const insight = metricInsights[code];
     const value = formatUnit(summary.latest_value, summary.unit, summary.unit === "%" ? 2 : 1);
     const delta = formatDelta(summary.yoy_change);
     const deltaClass = Number(summary.yoy_change) >= 0 ? "is-up" : "is-down";
     card.innerHTML = `
-      <span class="badge">${code}</span>
+      <span class="badge">${metricCodeLabels[code] || code}</span>
       <h3>${metricLabels[code]}</h3>
       <div class="metric-card__value">${value}</div>
       <p class="metric-card__delta ${deltaClass}">${delta}</p>
-      <p>${metadata.frequency || "frequência n.d."} · ${formatFullDate(summary.latest_date)}</p>
+      <p class="metric-card__date">${metadata.frequency || "frequência n.d."} · ${formatFullDate(summary.latest_date)}</p>
+      ${
+        insight
+          ? `<div class="metric-card__insight">
+              <h4>Interpretação Estratégica</h4>
+              <dl>
+              <dt>Variável → leitura</dt>
+              <dd>${insight.variable}</dd>
+              <dt>Leitura → decisão</dt>
+              <dd>${insight.decision}</dd>
+              </dl>
+            </div>`
+          : ""
+      }
     `;
   });
 }

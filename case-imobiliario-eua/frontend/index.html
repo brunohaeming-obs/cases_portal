@@ -3,27 +3,18 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Monitorar o setor imobiliário dos EUA para decidir com assertividade</title>
-    <link rel="stylesheet" href="/static/css/tokens.css" />
-    <link rel="stylesheet" href="/static/css/layout.css" />
-    <link rel="stylesheet" href="/static/css/components.css" />
-    <link rel="stylesheet" href="/static/css/story.css" />
+    <title>Monitoramento estratégico do setor imobiliário dos EUA</title>
+    <link rel="stylesheet" href="/static/css/tokens.css?v=20260515-kpi-strategy-pill" />
+    <link rel="stylesheet" href="/static/css/layout.css?v=20260515-kpi-strategy-pill" />
+    <link rel="stylesheet" href="/static/css/components.css?v=20260515-kpi-strategy-pill" />
+    <link rel="stylesheet" href="/static/css/story.css?v=20260515-kpi-strategy-pill" />
     <script defer src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
-    <script type="module" src="/static/js/main.js"></script>
+    <script type="module" src="/static/js/main.js?v=20260515-kpi-strategy-pill"></script>
   </head>
   <body>
     <header class="hero page-shell" aria-labelledby="page-title">
       <div class="hero__content">
-        <span class="hero__kicker">Case de inteligência econômica</span>
-        <h1 id="page-title">Monitorar o setor imobiliário dos EUA para decidir com assertividade</h1>
-        <p class="hero__subtitle">
-          Uma leitura estruturada de juros, hipotecas, construção residencial e oferta de novas casas para qualificar
-          decisões estratégicas.
-        </p>
-        <div class="hero__meta">
-          <span class="meta-pill">Fonte: <strong>FRED / U.S. Census</strong></span>
-          <span class="meta-pill">Atualização: <strong id="last-updated">carregando...</strong></span>
-        </div>
+        <h1 id="page-title">Monitoramento estratégico do setor imobiliário dos EUA</h1>
       </div>
     </header>
 
@@ -32,7 +23,6 @@
 
       <section class="story-summary" aria-labelledby="summary-title">
         <div class="story-summary__header">
-          <span class="story-eyebrow">Mapa da jornada</span>
           <h2 id="summary-title">Jornada da Inteligência Econômica</h2>
           <p>Da identificação do problema à transformação dos dados em decisão estratégica.</p>
         </div>
@@ -60,7 +50,6 @@
             </span>
             <strong class="story-summary__title">Condições financeiras</strong>
             <span class="story-summary__description">A taxa hipotecária de 30 anos mostra o custo do financiamento imobiliário.</span>
-            <span class="story-summary__badge">MORTGAGE30US</span>
           </a>
           <a class="story-summary__item" href="#grafico-hipotecas" data-summary-link="grafico-hipotecas">
             <span class="story-summary__number">04</span>
@@ -69,7 +58,6 @@
             </span>
             <strong class="story-summary__title">Crédito e construção</strong>
             <span class="story-summary__description">A originação de hipotecas e as casas iniciadas ajudam a observar se o mercado transforma intenção em atividade.</span>
-            <span class="story-summary__badge">RCMFLOORIG · HOUSTNSA · HOUST1FNSA</span>
           </a>
           <a class="story-summary__item" href="#grafico-oferta" data-summary-link="grafico-oferta">
             <span class="story-summary__number">05</span>
@@ -78,23 +66,25 @@
             </span>
             <strong class="story-summary__title">Oferta e decisão</strong>
             <span class="story-summary__description">Casas concluídas e meses de oferta indicam se o mercado absorve o que constrói.</span>
-            <span class="story-summary__badge">COMPUTSA · MSACSR</span>
           </a>
         </nav>
       </section>
 
       <section id="problema" class="intro-grid story-anchor" aria-label="Síntese do case">
         <article class="panel-card panel-card--numbered">
-          <span class="panel-card__number">01</span>
-          <span class="badge">Problema</span>
+          <h3>1 - Problema de negócio</h3>
           <p>
             Os dados sobre o mercado imobiliário dos EUA estavam <strong>dispersos</strong> em diferentes fontes,
             dificultando uma leitura consolidada para apoiar decisões da diretoria, do comercial e da produção.
           </p>
+          <p>
+            A questão central era sair da confusão causada pelo emaranhado de dados esparsos, confusos e sem lógica,
+            deixando de simplesmente “acompanhar o mercado imobiliário dos EUA”, para começar a aplicar inteligência,
+            identificando quais variáveis realmente importavam para o negócio.
+          </p>
         </article>
         <article id="metodo" class="panel-card panel-card--numbered story-anchor">
-          <span class="panel-card__number">02</span>
-          <span class="badge">Método</span>
+          <h3>2 - Método do Observatório FIESC</h3>
           <p>
             A inteligência econômica foi utilizada para selecionar <strong>variáveis centrais</strong> do setor
             imobiliário americano e organizar essas informações em uma leitura estruturada do ciclo da construção
@@ -102,37 +92,12 @@
           </p>
         </article>
         <article class="panel-card panel-card--numbered">
-          <span class="panel-card__number">03</span>
-          <span class="badge">Decisão</span>
+          <h3>3 - Decisão</h3>
           <p>
             O monitoramento passou a funcionar como um <strong>radar econômico</strong>, permitindo interpretar sinais
             do mercado e qualificar decisões estratégicas.
           </p>
         </article>
-      </section>
-
-      <section class="opening-copy" aria-label="Abertura da narrativa">
-        <p>
-          Para uma empresa industrial, que produz produtos de madeira voltados para a construção civil dos EUA,
-          acompanhar o setor imobiliário daquele país se tornou uma necessidade estratégica. O desafio inicial era
-          claro: havia muitas informações disponíveis, mas elas estavam dispersas em diferentes fontes, sem uma
-          estrutura consolidada que permitisse transformar dados em leitura econômica útil para a diretoria, para o
-          setor comercial e para a produção.
-        </p>
-        <p>
-          A questão central era sair da confusão causada pelo emaranhado de dados esparsos, confusos e sem lógica,
-          deixando de simplesmente “acompanhar o mercado imobiliário dos EUA”, para começar a aplicar inteligência,
-          identificando quais variáveis realmente importavam para o negócio.
-        </p>
-        <p>
-          Como o ciclo da construção residencial influencia a demanda por produtos ligados a obras, acabamentos e
-          componentes de madeira, o monitoramento do setor imobiliário passou a funcionar como um radar econômico para
-          antecipar movimentos relevantes do mercado.
-        </p>
-        <div class="quote-card">
-          A partir dessa lógica, o case organiza quatro sinais do ciclo imobiliário americano: custo do financiamento,
-          comportamento do crédito, início das obras e absorção da oferta.
-        </div>
       </section>
 
       <section class="filters-bar" aria-label="Filtros de período e atualização">
@@ -148,14 +113,26 @@
         </div>
       </section>
 
-      <section class="metrics-grid" aria-label="Valores atuais">
-        <article class="metric-card" data-summary-card="MORTGAGE30US"></article>
-        <article class="metric-card" data-summary-card="RCMFLOORIG"></article>
-        <article class="metric-card" data-summary-card="HOUST1FNSA"></article>
-        <article class="metric-card" data-summary-card="MSACSR"></article>
-      </section>
-
       <section id="grafico-juros" class="story-block story-section story-anchor" aria-labelledby="block-1-title">
+        <div class="story-visual">
+          <article class="chart-card chart-card--featured story-section__chart">
+            <div class="chart-card__header">
+              <div class="chart-card__title">
+                <h3>Taxa média das hipotecas fixas de 30 anos nos Estados Unidos</h3>
+                <p>Série semanal em percentual, com média do período selecionado.</p>
+              </div>
+              <span class="badge">MORTGAGE30US</span>
+            </div>
+            <div class="chart-shell">
+              <div id="chart-mortgage-rate" class="chart" role="img" aria-label="Gráfico de linha da taxa hipotecária de 30 anos"></div>
+            </div>
+            <div class="chart-card__footer">
+              <span class="chart-description">Tooltip com data, valor e variação em 12 meses.</span>
+              <span class="chart-source">Fonte: FRED / Freddie Mac.</span>
+            </div>
+          </article>
+          <article class="metric-card metric-card--side" data-summary-card="MORTGAGE30US"></article>
+        </div>
         <div class="story-copy story-section__text">
           <span class="story-eyebrow">Gráfico 1 — Taxa hipotecária de 30 anos</span>
           <h2 id="block-1-title" class="story-title">Taxa média das hipotecas fixas de 30 anos nos Estados Unidos.</h2>
@@ -175,25 +152,28 @@
             potencial por moradias.
           </div>
         </div>
-        <article class="chart-card chart-card--featured story-section__chart">
-          <div class="chart-card__header">
-            <div class="chart-card__title">
-              <h3>Taxa média das hipotecas fixas de 30 anos nos Estados Unidos</h3>
-              <p>Série semanal em percentual, com média do período selecionado.</p>
-            </div>
-            <span class="badge">MORTGAGE30US</span>
-          </div>
-          <div class="chart-shell">
-            <div id="chart-mortgage-rate" class="chart" role="img" aria-label="Gráfico de linha da taxa hipotecária de 30 anos"></div>
-          </div>
-          <div class="chart-card__footer">
-            <span class="chart-description">Tooltip com data, valor e variação em 12 meses.</span>
-            <span class="chart-source">Fonte: FRED / Freddie Mac.</span>
-          </div>
-        </article>
       </section>
 
       <section id="grafico-hipotecas" class="story-block story-section story-anchor" aria-labelledby="block-2-title">
+        <div class="story-visual">
+          <article class="chart-card chart-card--featured story-section__chart">
+            <div class="chart-card__header">
+              <div class="chart-card__title">
+                <h3>Originação de novas hipotecas</h3>
+                <p>Barras mostram o nível da originação; a linha mostra a variação interanual.</p>
+              </div>
+              <span class="badge">RCMFLOORIG</span>
+            </div>
+            <div class="chart-shell">
+              <div id="chart-origination" class="chart" role="img" aria-label="Gráfico de barras e linha da originação de hipotecas"></div>
+            </div>
+            <div class="chart-card__footer">
+              <span class="chart-description">Tooltip com data, valor e variação interanual.</span>
+              <span class="chart-source">Fonte: FRED.</span>
+            </div>
+          </article>
+          <article class="metric-card metric-card--side" data-summary-card="RCMFLOORIG"></article>
+        </div>
         <div class="story-copy story-section__text">
           <span class="story-eyebrow">Gráfico 2 — Acessibilidade habitacional e originação de hipotecas</span>
           <h2 id="block-2-title" class="story-title">Originação de novas hipotecas.</h2>
@@ -215,25 +195,33 @@
             imóveis.
           </div>
         </div>
-        <article class="chart-card chart-card--featured story-section__chart">
-          <div class="chart-card__header">
-            <div class="chart-card__title">
-              <h3>Originação de novas hipotecas</h3>
-              <p>Barras mostram o nível da originação; a linha mostra a variação interanual.</p>
-            </div>
-            <span class="badge">RCMFLOORIG</span>
-          </div>
-          <div class="chart-shell">
-            <div id="chart-origination" class="chart" role="img" aria-label="Gráfico de barras e linha da originação de hipotecas"></div>
-          </div>
-          <div class="chart-card__footer">
-            <span class="chart-description">Tooltip com data, valor e variação interanual.</span>
-            <span class="chart-source">Fonte: FRED.</span>
-          </div>
-        </article>
       </section>
 
       <section id="grafico-casas" class="story-block story-section story-anchor" aria-labelledby="block-3-title">
+        <div class="story-visual">
+          <article class="chart-card chart-card--featured story-section__chart">
+            <div class="chart-card__header">
+              <div class="chart-card__title">
+                <h3>Casas iniciadas</h3>
+                <p>Total dos EUA e casas unifamiliares, com destaque para a série mais aderente ao case.</p>
+              </div>
+              <span class="badge">HOUSTNSA | HOUST1FNSA</span>
+            </div>
+            <div class="mode-toggle segmented-control" role="group" aria-label="Transformação do gráfico de casas iniciadas">
+              <button type="button" data-housing-mode="value">Mensal</button>
+              <button type="button" data-housing-mode="ma12" class="is-active">Média 12m</button>
+              <button type="button" data-housing-mode="yoy_change">Variação anual</button>
+            </div>
+            <div class="chart-shell">
+              <div id="chart-housing-starts" class="chart" role="img" aria-label="Gráfico de linhas de casas iniciadas"></div>
+            </div>
+            <div class="chart-card__footer">
+              <span class="chart-description">A média móvel de 12 meses reduz o ruído das séries não ajustadas sazonalmente.</span>
+              <span class="chart-source">Fonte: FRED / U.S. Census Bureau.</span>
+            </div>
+          </article>
+          <article class="metric-card metric-card--side" data-summary-card="HOUST1FNSA"></article>
+        </div>
         <div class="story-copy story-section__text">
           <span class="story-eyebrow">Gráfico 3 — Casas iniciadas</span>
           <h2 id="block-3-title" class="story-title">Casas iniciadas.</h2>
@@ -249,30 +237,28 @@
             construção residencial.
           </div>
         </div>
-        <article class="chart-card chart-card--featured story-section__chart">
-          <div class="chart-card__header">
-            <div class="chart-card__title">
-              <h3>Casas iniciadas</h3>
-              <p>Total dos EUA e casas unifamiliares, com destaque para a série mais aderente ao case.</p>
-            </div>
-            <span class="badge">HOUSTNSA | HOUST1FNSA</span>
-          </div>
-          <div class="mode-toggle segmented-control" role="group" aria-label="Transformação do gráfico de casas iniciadas">
-            <button type="button" data-housing-mode="value">Mensal</button>
-            <button type="button" data-housing-mode="ma12" class="is-active">Média 12m</button>
-            <button type="button" data-housing-mode="yoy_change">Variação anual</button>
-          </div>
-          <div class="chart-shell">
-            <div id="chart-housing-starts" class="chart" role="img" aria-label="Gráfico de linhas de casas iniciadas"></div>
-          </div>
-          <div class="chart-card__footer">
-            <span class="chart-description">A média móvel de 12 meses reduz o ruído das séries não ajustadas sazonalmente.</span>
-            <span class="chart-source">Fonte: FRED / U.S. Census Bureau.</span>
-          </div>
-        </article>
       </section>
 
       <section id="grafico-oferta" class="story-block story-section story-anchor" aria-labelledby="block-4-title">
+        <div class="story-visual">
+          <article class="chart-card chart-card--featured story-section__chart">
+            <div class="chart-card__header">
+              <div class="chart-card__title">
+                <h3>Casas concluídas e oferta de novas casas</h3>
+                <p>Barras para casas concluídas e linha para meses de oferta.</p>
+              </div>
+              <span class="badge">COMPUTSA | MSACSR</span>
+            </div>
+            <div class="chart-shell">
+              <div id="chart-completions-supply" class="chart" role="img" aria-label="Gráfico combinado de casas concluídas e meses de oferta"></div>
+            </div>
+            <div class="chart-card__footer">
+              <span class="chart-description">Faixas visuais indicam oferta baixa, normal e elevada.</span>
+              <span class="chart-source">Fonte: FRED / U.S. Census Bureau.</span>
+            </div>
+          </article>
+          <article class="metric-card metric-card--side" data-summary-card="MSACSR"></article>
+        </div>
         <div class="story-copy story-section__text">
           <span class="story-eyebrow">Gráfico 4 — Casas concluídas e oferta de novas casas</span>
           <h2 id="block-4-title" class="story-title">Casas concluídas e oferta de novas casas.</h2>
@@ -294,22 +280,6 @@
             constrói.
           </div>
         </div>
-        <article class="chart-card chart-card--featured story-section__chart">
-          <div class="chart-card__header">
-            <div class="chart-card__title">
-              <h3>Casas concluídas e oferta de novas casas</h3>
-              <p>Barras para casas concluídas e linha para meses de oferta.</p>
-            </div>
-            <span class="badge">COMPUTSA | MSACSR</span>
-          </div>
-          <div class="chart-shell">
-            <div id="chart-completions-supply" class="chart" role="img" aria-label="Gráfico combinado de casas concluídas e meses de oferta"></div>
-          </div>
-          <div class="chart-card__footer">
-            <span class="chart-description">Faixas visuais indicam oferta baixa, normal e elevada.</span>
-            <span class="chart-source">Fonte: FRED / U.S. Census Bureau.</span>
-          </div>
-        </article>
       </section>
 
       <section class="final-section" aria-labelledby="final-title">
@@ -329,48 +299,6 @@
           O foco é, utilizando variáveis centrais para o negócio da empresa, compreender suas relações econômicas e
           transformar informação em decisão estratégica.
         </p>
-        <div class="decision-matrix decision-grid">
-          <article class="decision-card">
-            <span class="decision-card__code">MORTGAGE30US</span>
-            <h3>Taxa hipotecária de 30 anos</h3>
-            <dl>
-              <dt>Variável → leitura</dt>
-              <dd>Condições financeiras do mercado imobiliário.</dd>
-              <dt>Leitura → decisão</dt>
-              <dd>A elevação dos juros pode encarecer o financiamento, reduzir a acessibilidade e adiar parte da demanda.</dd>
-            </dl>
-          </article>
-          <article class="decision-card">
-            <span class="decision-card__code">RCMFLOORIG</span>
-            <h3>Originação de novas hipotecas</h3>
-            <dl>
-              <dt>Variável → leitura</dt>
-              <dd>Transformação das condições financeiras em comportamento efetivo do mercado.</dd>
-              <dt>Leitura → decisão</dt>
-              <dd>Quando a originação perde força, o mercado residencial pode sinalizar enfraquecimento.</dd>
-            </dl>
-          </article>
-          <article class="decision-card">
-            <span class="decision-card__code">HOUSTNSA | HOUST1FNSA</span>
-            <h3>Casas iniciadas</h3>
-            <dl>
-              <dt>Variável → leitura</dt>
-              <dd>Atividade da construção residencial.</dd>
-              <dt>Leitura → decisão</dt>
-              <dd>Novas construções podem sinalizar demanda futura por componentes, acabamentos e materiais.</dd>
-            </dl>
-          </article>
-          <article class="decision-card">
-            <span class="decision-card__code">COMPUTSA | MSACSR</span>
-            <h3>Casas concluídas e oferta em meses</h3>
-            <dl>
-              <dt>Variável → leitura</dt>
-              <dd>Equilíbrio entre produção imobiliária e absorção da demanda.</dd>
-              <dt>Leitura → decisão</dt>
-              <dd>Aumento simultâneo de conclusões e oferta em meses pode indicar acúmulo de estoque e exigir cautela.</dd>
-            </dl>
-          </article>
-        </div>
       </section>
 
       <footer class="footer-note">
